@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Athena - AI Co-Teacher x AI Coder",
+    "slug": "athena-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0b0f19"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.athena.voiceai",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Athena needs microphone access for real-time voice conversations and AI voice coding sessions."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0b0f19"
+      },
+      "package": "com.athena.voiceai",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.BLUETOOTH"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

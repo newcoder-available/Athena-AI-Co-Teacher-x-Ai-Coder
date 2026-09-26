@@ -1,19 +1,14 @@
-# Athena — Voice AI Co-Teacher
+# Athena — AI Co-Teacher x AI Coder
 
-A live, **audio-only** classroom where a teacher, several students, and an AI
-co-teacher named **Athena** share one Agora voice channel. Athena listens to the
-whole lesson, answers when she's called on, runs spoken quizzes, tracks who is
-struggling, and hands the teacher a post-class summary — while the teacher keeps
-a hard mute and override at all times.
+**The Agora Voice AI Hackathon by AI Mobile Coders | Powered by Agora Conversational AI**
 
-Built for PS31 against
-[`docs/PS31-ai-co-teacher-implementation-plan.md`](docs/PS31-ai-co-teacher-implementation-plan.md).
-For the full story of every bug and fix, see [`docs/BUILD-LOG.md`](docs/BUILD-LOG.md).
+Athena is a next-generation voice-first platform combining two powerful real-time mobile & web experiences:
+1. **AI Co-Teacher Classroom**: Live multi-party voice channel with Agora RTC + Conversational AI. Spoken quizzes with countdown cards, student floor requests, live speech-to-text transcripts, and teacher hard-mute override.
+2. **AI Voice Coder (Mobile Pair Programmer)**: Hands-free voice coding assistant. Ask Athena to explain complex algorithms, detect bugs, analyze time complexity, and step through code line-by-line in real-time.
 
-**No API keys beyond Agora.** Speech recognition, the language model, and the
-voice are all resold through the Agora project — Deepgram, `gpt-4o-mini`, and
-MiniMax behind one agent. Nothing here calls OpenAI, or any other vendor,
-directly.
+Built with **Agora Conversational AI Engine** (Deepgram STT → LLM Reasoning → MiniMax/ElevenLabs TTS), Next.js 16 Web App, and a dedicated **React Native / Expo Mobile App** (`apps/mobile`).
+
+**No external API keys needed beyond Agora.** Speech recognition, LLM reasoning, and natural voice synthesis are orchestrated natively through Agora RTC + ConvoAI.
 
 ---
 
@@ -108,9 +103,12 @@ pnpm --filter @echosphere/orchestrator dev
 
 # Terminal 2 — web app on :3000
 pnpm --filter @echosphere/web dev
+
+# Terminal 3 — Mobile App (Expo / React Native for iOS, Android, and Web)
+pnpm --filter @echosphere/mobile start
 ```
 
-Open <http://localhost:3000/join>.
+Open <http://localhost:3000/join> for Web or scan the Expo QR code for iOS/Android Mobile App.
 
 **Stop both:**
 ```bash

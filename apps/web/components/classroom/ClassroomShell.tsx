@@ -29,7 +29,7 @@ const AgoraProvider = dynamic(
           clientRef.current = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' });
         }
         return (
-          <AgoraRTCProvider client={clientRef.current}>{children}</AgoraRTCProvider>
+          <AgoraRTCProvider client={clientRef.current}>{children as any}</AgoraRTCProvider>
         );
       },
     };
