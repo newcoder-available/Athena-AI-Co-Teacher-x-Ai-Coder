@@ -21,27 +21,6 @@ import {
   type SessionSummary,
 } from '@/lib/orchestrator';
 
-const doodleProducts = [
-  {
-    name: 'The Doodle Kit',
-    price: '₹999',
-    tag: 'Best seller',
-    href: 'https://www.doodleproject.in/product-page/the-doodle-kit',
-  },
-  {
-    name: "Traveller's Doodle Kit",
-    price: '₹1,499',
-    tag: 'On the go',
-    href: 'https://www.doodleproject.in/product-page/traveler-s-doodle-kit',
-  },
-  {
-    name: 'The Therapeutic Art Kit',
-    price: '₹1,999',
-    tag: 'Relax pick',
-    href: 'https://www.doodleproject.in/product-page/the-therapeutic-art-kit?currency=INR',
-  },
-];
-
 export default function JoinPage() {
   const router = useRouter();
   const [sessions, setSessions] = useState<SessionSummary[]>([]);
@@ -54,7 +33,6 @@ export default function JoinPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [reachable, setReachable] = useState<boolean | null>(null);
-  const [doodleOpen, setDoodleOpen] = useState(false);
   // Teachers must have an Agora project on file before they can create or
   // join a lesson. `override` is an anonymous teacher's pair, sent with each
   // lesson they create; a signed-in teacher's is resolved server-side. See
