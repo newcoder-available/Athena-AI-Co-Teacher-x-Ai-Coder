@@ -1,25 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "jsx": "react-native",
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "strict": true,
-    "esModuleInterop": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "ignoreDeprecations": "6.0",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
+    "types": ["node"],
+    "noEmit": true
   },
   "include": [
-    "src/**/*",
-    "App.tsx",
-    "index.js"
-  ],
-  "extends": "expo/tsconfig.base"
+    "capacitor.config.ts"
+  ]
 }

@@ -105,7 +105,7 @@ export const config = {
   ttsVoiceId: process.env.TTS_VOICE_ID ?? 'English_captivating_female1',
 
   /** Comma-separated browser origins allowed to call this service. */
-  corsOrigins: (process.env.CORS_ORIGINS ?? 'http://localhost:3000')
+  corsOrigins: (process.env.CORS_ORIGINS ?? 'http://localhost:3000,https://localhost,capacitor://localhost')
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean),

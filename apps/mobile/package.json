@@ -2,35 +2,21 @@
   "name": "@echosphere/mobile",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "cap": "cap",
+    "sync": "cap sync",
+    "open:android": "cap open android",
+    "build:android": "cap sync android",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src/ --ext .ts,.tsx"
+    "lint": "echo 'no lint configured'"
   },
   "dependencies": {
-    "@babel/runtime": "^7.26.0",
-    "@echosphere/shared-types": "workspace:*",
-    "expo": "~57.0.25",
-    "expo-modules-core": "~57.0.19",
-    "expo-av": "~16.0.8",
-    "expo-haptics": "~57.0.3",
-    "expo-linear-gradient": "~57.0.2",
-    "expo-status-bar": "~57.0.1",
-    "invariant": "^2.2.4",
-    "lucide-react-native": "^0.475.0",
-    "react": "19.2.3",
-    "react-native": "0.86.3",
-    "react-native-safe-area-context": "^5.7.0",
-    "react-native-svg": "^15.15.4"
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/core": "^8.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.0",
-    "@types/invariant": "^2.2.37",
-    "@types/react": "~19.2.18",
-    "typescript": "^6.0.3"
+    "@capacitor/cli": "^8.0.0",
+    "@types/node": "^22.10.6",
+    "typescript": "^5.7.3"
   }
 }

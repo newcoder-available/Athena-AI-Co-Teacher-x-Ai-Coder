@@ -41,12 +41,16 @@ NEXT_PUBLIC_ORCHESTRATOR_URL=http://localhost:8787
 NEXT_PUBLIC_AGORA_APP_ID=<App ID>
 NEXT_AGORA_APP_CERTIFICATE=<App Certificate>
 PORT=8787
-CORS_ORIGINS=http://localhost:3000
+CORS_ORIGINS=http://localhost:3000,https://localhost,capacitor://localhost
 LLM_MODEL=gpt-4o-mini
 ```
 
 No Customer ID / Secret is needed — the `agora-agents` SDK runs in App
 Credentials mode and mints the ConvoAI token itself.
+
+> **Note for Android App:** For the Capacitor Android WebView shell, include
+> `https://localhost` and `capacitor://localhost` (or your Cloudflare tunnel URL)
+> in `CORS_ORIGINS` so the mobile student view can reach the orchestrator SSE stream.
 
 > **After changing credentials, fully restart both servers.** `NEXT_PUBLIC_*` is
 > baked in when the web server starts.
@@ -104,11 +108,11 @@ pnpm --filter @echosphere/orchestrator dev
 # Terminal 2 — web app on :3000
 pnpm --filter @echosphere/web dev
 
-# Terminal 3 — Mobile App (Expo / React Native for iOS, Android, and Web)
-pnpm --filter @echosphere/mobile start
+# Terminal 3 — Android Mobile App (Capacitor)
+pnpm --filter @echosphere/mobile build:android   # or npx cap open android
 ```
 
-Open <http://localhost:3000/join> for Web or scan the Expo QR code for iOS/Android Mobile App.
+Open <http://localhost:3000/join> for Web or run the Android app via Android Studio / `adb install`.
 
 **Stop both:**
 ```bash
@@ -169,6 +173,34 @@ Then point `NEXT_PUBLIC_ORCHESTRATOR_URL` at the orchestrator tunnel, add the
 web tunnel origin to `CORS_ORIGINS` (exact, `https://`, no trailing slash),
 restart both. Both must be tunnelled — an `https://` page can't call
 `http://localhost`.
+
+### 5. Android Mobile App (Capacitor)
+
+The student experience can be built and run as an Android application via Capacitor (`apps/mobile`), wrapping the live web app with native audio permissions, haptics, and background keep-alive.
+
+**Configuration:**
+Set `CAPACITOR_SERVER_URL` in `apps/mobile` or use `capacitor.config.ts`:
+- **Android Emulator**: `http://10.0.2.2:3000` (default)
+- **Physical Device (LAN)**: `http://<your-lan-ip>:3000` (e.g. `http://192.168.1.100:3000`)
+- **Remote / Cloudflare Tunnel**: `https://<web-tunnel-id>.trycloudflare.com`
+
+**Build and Run steps:**
+```bash
+# 1. Sync web assets and Capacitor plugins
+cd apps/mobile
+npx cap sync android
+
+# 2. Build debug APK using Gradle:
+cd android
+./gradlew assembleDebug      # on Windows: .\gradlew.bat assembleDebug
+cd ..
+
+# 3. Or open in Android Studio:
+npx cap open android
+
+# 4. Install the debug APK to connected device / emulator:
+adb install android/app/build/outputs/apk/debug/app-debug.apk
+```
 
 ---
 

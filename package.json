@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "pnpm --filter @echosphere/web dev",
     "dev:classroom": "pnpm --filter @echosphere/orchestrator --filter @echosphere/web --parallel dev",
-    "dev:mobile": "pnpm --filter @echosphere/mobile start",
+    "dev:mobile": "pnpm --filter @echosphere/mobile build:android",
     "build": "pnpm --filter @echosphere/web build",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck"
